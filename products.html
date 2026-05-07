@@ -69,13 +69,28 @@
       padding: 10rem 5rem 5rem;
       position: relative; overflow: hidden;
     }
+    /* Sole grande e opaco SVG a destra */
     .page-hero::after {
-      content: 'PRODUCTS';
-      position: absolute; right: -1rem; bottom: -1.5rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900; font-size: 11rem; letter-spacing: -0.02em;
-      color: rgba(255,255,255,0.04); line-height: 1;
+      content: '';
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 580px; height: 580px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 38%,
+        rgba(216,186,116,0.18) 0%,
+        rgba(216,186,116,0.10) 38%,
+        transparent 65%
+      );
+      box-shadow: inset 0 0 0 18px rgba(216,186,116,0.10),
+                  inset 0 0 0 36px rgba(216,186,116,0.07),
+                  inset 0 0 0 54px rgba(216,186,116,0.05);
       pointer-events: none;
+    }
+    .page-hero-sun {
+      position: absolute; right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 520px; height: 520px;
+      pointer-events: none; opacity: 0.13;
     }
     .page-hero-eyebrow {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
@@ -368,6 +383,15 @@
 
 <!-- ── PAGE HERO ── -->
 <section class="page-hero">
+  <!-- Sole del logo: grande, opaco, decorativo -->
+  <svg class="page-hero-sun" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="80" r="55" fill="#D8BA74"/>
+    <line x1="45" y1="115" x2="155" y2="115" stroke="#2F5819" stroke-width="5"/>
+    <line x1="50" y1="128" x2="150" y2="128" stroke="#2F5819" stroke-width="5"/>
+    <line x1="55" y1="141" x2="145" y2="141" stroke="#2F5819" stroke-width="5"/>
+    <clipPath id="sunclip"><rect x="0" y="115" width="200" height="100"/></clipPath>
+    <circle cx="100" cy="80" r="55" fill="#D8BA74" clip-path="url(#sunclip)" opacity="0"/>
+  </svg>
   <p class="page-hero-eyebrow">AFRIPURE Product Catalogue</p>
   <h1 class="page-hero-title">Clean.<br>Reliable.<br>Natural.</h1>
   <p class="page-hero-sub">Four product lines. One commitment — effective formulas, quality ingredients and competitive pricing for everyday use.</p>
@@ -398,7 +422,7 @@
       <!-- Universal Degreaser -->
       <div class="product-card" data-line="home">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/2F5819?text=Universal+Degreaser" alt="AFRIPURE Universal Degreaser" />
+          <img src="universaldegreaser.PNG" alt="AFRIPURE Universal Degreaser" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
@@ -421,7 +445,7 @@
       <!-- Window Cleaner -->
       <div class="product-card" data-line="home">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/2F5819?text=Window+Cleaner" alt="AFRIPURE Window Cleaner" />
+          <img src="windowcleaner.PNG" alt="AFRIPURE Window Cleaner" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
@@ -444,7 +468,7 @@
       <!-- Floor Cleaner -->
       <div class="product-card" data-line="home">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/2F5819?text=Floor+Cleaner" alt="AFRIPURE Floor Cleaner" />
+          <img src="floor.PNG" alt="AFRIPURE Floor Cleaner" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
@@ -467,7 +491,7 @@
       <!-- Dishwashing Liquid -->
       <div class="product-card" data-line="home">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/2F5819?text=Dishes" alt="AFRIPURE Dishwashing Liquid" />
+          <img src="dishes.PNG" alt="AFRIPURE Dishwashing Liquid" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
@@ -490,7 +514,7 @@
       <!-- Multi -->
       <div class="product-card" data-line="home">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/2F5819?text=Multi" alt="AFRIPURE Multi Purpose Detergent" />
+          <img src="multi.PNG" alt="AFRIPURE Multi Purpose Detergent" />
           <span class="vol-pill">1 L</span>
         </div>
         <div class="product-body">
@@ -527,7 +551,7 @@
       <!-- Laundry Detergent -->
       <div class="product-card" data-line="laundry">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/5EA563?text=Laundry" alt="AFRIPURE Laundry Detergent" />
+          <img src="laundry.PNG" alt="AFRIPURE Laundry Detergent" />
           <span class="vol-pill">1 L</span>
         </div>
         <div class="product-body">
@@ -550,7 +574,7 @@
       <!-- Baby Laundry -->
       <div class="product-card" data-line="laundry">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/5EA563?text=Baby+Laundry" alt="AFRIPURE Baby Laundry" />
+          <img src="babylaundry.PNG" alt="AFRIPURE Baby Laundry" />
           <span class="vol-pill">1 L</span>
         </div>
         <div class="product-body">
@@ -573,7 +597,7 @@
       <!-- Fabric Softener -->
       <div class="product-card" data-line="laundry">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/5EA563?text=Softener" alt="AFRIPURE Fabric Softener" />
+          <img src="handsoap.PNG" alt="AFRIPURE Fabric Softener" />
           <span class="vol-pill">1 L</span>
         </div>
         <div class="product-body">
@@ -610,7 +634,7 @@
       <!-- Shampoo -->
       <div class="product-card" data-line="care">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/D8BA74?text=Shampoo" alt="AFRIPURE Shampoo" />
+          <img src="shampoo.PNG" alt="AFRIPURE Shampoo" />
           <span class="vol-pill">1 L</span>
         </div>
         <div class="product-body">
@@ -633,7 +657,7 @@
       <!-- Hand Soap -->
       <div class="product-card" data-line="care">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/D8BA74?text=Hand+Soap+Rose" alt="AFRIPURE Handwash Rose" />
+          <img src="handsoap.PNG" alt="AFRIPURE Handwash Rose" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
@@ -670,7 +694,7 @@
       <!-- Detox -->
       <div class="product-card" data-line="pro">
         <div class="product-img">
-          <img src="https://placehold.co/130x200/F7F4ED/222820?text=DETOX" alt="AFRIPURE Detox Disinfectant" />
+          <img src="detox.PNG" alt="AFRIPURE Detox Disinfectant" />
           <span class="vol-pill">500 mL</span>
         </div>
         <div class="product-body">
