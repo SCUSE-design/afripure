@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AFRIPURE — Pure Care. Everyday Performance.</title>
+  <meta name="description" content="AFRIPURE delivers reliable, nature-inspired home and personal care products made for everyday use, retail distribution and growing markets." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #2F5819;
+      --green-mid: #5EA563;
+      --gold: #D8BA74;
+      --gold-light: #EFDCA4;
+      --charcoal: #222820;
+      --cream: #F9F7F2;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0.75rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(47,88,25,0.1);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(47,88,25,0.09); }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 50px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--charcoal); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-mid); }
+    .nav-cta {
+      background: var(--green-dark); color: var(--white) !important;
+      padding: 0.6rem 1.5rem; border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--green-mid) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      background: var(--green-dark);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 10rem 4.5rem 6rem 5rem;
+      position: relative; z-index: 2;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; top: 0; right: -70px; bottom: 0; width: 140px;
+      background: var(--green-dark);
+      clip-path: polygon(0 0, 0% 100%, 100% 100%);
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(3.5rem, 5.5vw, 5.2rem);
+      line-height: 0.95; color: var(--white); margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title em { color: var(--gold); font-style: normal; }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.68);
+      max-width: 380px; margin-bottom: 2.8rem;
+      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-tagline {
+      position: absolute; bottom: 2.5rem; left: 5rem;
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      opacity: 0; animation: fadeUp 0.8s 1s forwards;
+    }
+
+    /* HERO RIGHT — bright white */
+    .hero-right {
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 4rem 4rem 6rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle at 55% 45%, var(--gold-light) 0%, rgba(239,220,164,0.22) 55%, transparent 100%);
+      top: 50%; left: 50%;
+      transform: translate(-38%, -50%);
+      opacity: 0; animation: scaleIn 1s 0.3s forwards;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      position: relative; z-index: 2; max-width: 420px;
+    }
+    .product-card-mini {
+      background: var(--white);
+      border: 1.5px solid rgba(47,88,25,0.12);
+      box-shadow: 0 2px 14px rgba(47,88,25,0.07);
+      padding: 1.3rem 1.1rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      opacity: 0; transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .product-card-mini:nth-child(1) { animation: fadeUp 0.7s 0.6s forwards; }
+    .product-card-mini:nth-child(2) { animation: fadeUp 0.7s 0.75s forwards; margin-top: 2rem; }
+    .product-card-mini:nth-child(3) { animation: fadeUp 0.7s 0.9s forwards; }
+    .product-card-mini:nth-child(4) { animation: fadeUp 0.7s 1.05s forwards; margin-top: -2rem; }
+    .product-card-mini:hover { box-shadow: 0 8px 28px rgba(47,88,25,0.13); transform: translateY(-3px); }
+    .card-line-tag {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--green-dark); padding: 0.18rem 0.5rem;
+      display: inline-block; width: fit-content;
+    }
+    .card-line-tag.laundry { background: var(--green-mid); }
+    .card-line-tag.care { background: var(--gold); color: var(--charcoal); }
+    .card-line-tag.pro { background: var(--charcoal); }
+    .card-product-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.05rem; color: var(--charcoal); line-height: 1.1;
+    }
+    .card-benefit { font-size: 0.72rem; color: var(--green-dark); font-weight: 600; }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--gold); color: var(--charcoal);
+      font-family: 'Barlow', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2.2rem; border: none; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      font-family: 'Barlow', sans-serif; font-weight: 600;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2.2rem; border: 1.5px solid rgba(255,255,255,0.3);
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+    .btn-dark {
+      background: var(--green-dark); color: var(--white);
+      font-family: 'Barlow', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2.2rem; border: none; cursor: pointer;
+      text-decoration: none; display: inline-block; width: fit-content;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: var(--green-mid); }
+
+    /* ── BRAND STRIP ── */
+    .brand-strip {
+      background: var(--charcoal);
+      padding: 1.2rem 5rem;
+      display: flex; align-items: center; gap: 2.5rem;
+    }
+    .brand-strip-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; white-space: nowrap;
+    }
+    .brand-strip-items { display: flex; gap: 2.5rem; align-items: center; }
+    .strip-item {
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.42); font-weight: 600; white-space: nowrap;
+    }
+
+    /* ── ABOUT — white bg ── */
+    .about { display: grid; grid-template-columns: 1fr 1fr; background: var(--white); }
+    .about-visual {
+      background: var(--green-mid);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; min-height: 520px;
+    }
+    .about-visual-inner { padding: 4rem; display: flex; flex-direction: column; gap: 2rem; position: relative; z-index: 2; }
+    .big-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 5rem; font-weight: 900; line-height: 1; color: rgba(255,255,255,0.1);
+    }
+    .big-stat-label {
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--white); font-weight: 700;
+    }
+    .about-decor-circle {
+      position: absolute; width: 340px; height: 340px;
+      border: 55px solid rgba(255,255,255,0.06); border-radius: 50%; top: -70px; right: -70px;
+    }
+    .about-decor-circle2 {
+      position: absolute; width: 180px; height: 180px;
+      border: 35px solid rgba(47,88,25,0.22); border-radius: 50%; bottom: -30px; left: 40px;
+    }
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .value-chip {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.6rem 0.9rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .about-content {
+      background: var(--white);
+      padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--green-mid); margin-bottom: 1.1rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(2rem, 3.2vw, 2.8rem);
+      line-height: 1.05; color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .section-body {
+      font-size: 1rem; line-height: 1.75; color: rgba(34,40,32,0.62);
+      max-width: 460px; margin-bottom: 1.8rem;
+    }
+    .line-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .line-tag {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1.5px solid;
+    }
+    .lt-home { border-color: var(--green-dark); color: var(--green-dark); }
+    .lt-laundry { border-color: var(--green-mid); color: var(--green-mid); }
+    .lt-care { border-color: var(--gold); color: var(--charcoal); background: var(--gold-light); }
+    .lt-pro { border-color: var(--charcoal); color: var(--charcoal); }
+
+    /* ── PRODUCTS TEASER — light cream bg ── */
+    .products-section { background: var(--cream); padding: 7rem 5rem; }
+    .products-header {
+      display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem;
+    }
+    .view-all {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green-dark); text-decoration: none;
+      border-bottom: 2px solid var(--gold); padding-bottom: 2px; transition: color 0.2s;
+    }
+    .view-all:hover { color: var(--green-mid); }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .product-card {
+      background: var(--white);
+      border: 1px solid rgba(47,88,25,0.09);
+      box-shadow: 0 2px 10px rgba(47,88,25,0.05);
+      display: flex; flex-direction: column; overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .product-card:hover { box-shadow: 0 12px 36px rgba(47,88,25,0.13); transform: translateY(-4px); }
+    .product-card-img {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      background: var(--cream); position: relative; overflow: hidden;
+    }
+    .product-card-img img { max-height: 180px; max-width: 120px; object-fit: contain; transition: transform 0.4s; }
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .product-card-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--white); background: var(--green-dark); padding: 0.18rem 0.55rem;
+      display: inline-block; width: fit-content;
+    }
+    .product-card-tag.laundry { background: var(--green-mid); }
+    .product-card-tag.care { background: var(--gold); color: var(--charcoal); }
+    .product-card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.2rem; color: var(--charcoal); line-height: 1.1;
+    }
+    .product-card-desc { font-size: 0.82rem; line-height: 1.6; color: rgba(34,40,32,0.6); flex: 1; }
+    .product-card-vol { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: var(--green-dark); margin-top: 0.4rem; }
+
+    /* ── B2B ── */
+    .b2b {
+      background: var(--green-dark); padding: 7rem 5rem;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .b2b::before {
+      content: 'AFRIPURE'; position: absolute; right: -1rem; bottom: -2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 9rem; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+    }
+    .b2b-content .section-eyebrow { color: var(--gold); }
+    .b2b-content .section-title { color: var(--white); }
+    .b2b-content .section-body { color: rgba(255,255,255,0.58); }
+    .b2b-features { display: flex; flex-direction: column; gap: 1.1rem; }
+    .b2b-feature {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.1rem 1.4rem; background: rgba(255,255,255,0.06); border-left: 3px solid var(--gold);
+    }
+    .b2b-feature-icon {
+      width: 34px; height: 34px; flex-shrink: 0; background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .b2b-feature-icon svg { width: 16px; height: 16px; }
+    .b2b-feature-title { font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+    .b2b-feature-desc { font-size: 0.78rem; line-height: 1.55; color: rgba(255,255,255,0.5); }
+
+    /* ── CONTACT — white ── */
+    .contact {
+      background: var(--white); padding: 7rem 5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green-dark);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--cream); border: 1.5px solid rgba(47,88,25,0.16);
+      padding: 0.82rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.95rem;
+      color: var(--charcoal); outline: none; transition: border-color 0.2s; appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--green-mid); background: var(--white); }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--charcoal); padding: 3rem 5rem 2rem; }
+    .footer-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.09); margin-bottom: 2rem;
+    }
+    .footer-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-tagline {
+      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-top: 0.7rem;
+    }
+    .footer-mission { font-size: 0.8rem; line-height: 1.65; color: rgba(255,255,255,0.35); max-width: 260px; margin-top: 0.9rem; }
+    .footer-links-group { display: flex; gap: 5rem; }
+    .footer-col-title {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col-links a { font-size: 0.82rem; color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.26); letter-spacing: 0.05em; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: translate(-38%, -50%) scale(0.85); }
+      to   { opacity: 1; transform: translate(-38%, -50%) scale(1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 0.75rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 8rem 2rem 4rem; }
+      .hero-left::after { display: none; }
+      .hero-right { padding: 4rem 2rem; }
+      .hero-tagline { left: 2rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-content { padding: 4rem 2rem; }
+      .products-section { padding: 5rem 2rem; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .b2b { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+      .contact { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+      footer { padding: 3rem 2rem 2rem; }
+      .footer-top { flex-direction: column; gap: 2.5rem; }
+      .footer-links-group { gap: 3rem; }
+      .brand-strip { padding: 1.2rem 2rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0.7rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+      .products-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .b2b::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="logog.PNG" alt="AFRIPURE" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="#b2b">For Business</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Afripure plc — Ethiopia &amp; Beyond</p>
+    <h1 class="hero-title">Pure<br>Care.<br><em>Everyday</em><br>Performance.</h1>
+    <p class="hero-sub">Reliable home and personal care products for families, businesses and distributors — inspired by nature, built for everyday use.</p>
+    <div class="hero-actions">
+      <a href="products.html" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-ghost">Become a Distributor</a>
+    </div>
+    <span class="hero-tagline">Reliable cleaning solutions inspired by nature</span>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circle"></div>
+    <div class="hero-grid">
+      <div class="product-card-mini">
+        <span class="card-line-tag">Home</span>
+        <span class="card-product-name">Universal Degreaser</span>
+        <span class="card-benefit">Powerful grease removal</span>
+      </div>
+      <div class="product-card-mini">
+        <span class="card-line-tag laundry">Laundry</span>
+        <span class="card-product-name">Baby Laundry</span>
+        <span class="card-benefit">Gentle on delicate fabrics</span>
+      </div>
+      <div class="product-card-mini">
+        <span class="card-line-tag care">Care</span>
+        <span class="card-product-name">Hand Soap Rose</span>
+        <span class="card-benefit">Sanitizing action</span>
+      </div>
+      <div class="product-card-mini">
+        <span class="card-line-tag pro">Pro</span>
+        <span class="card-product-name">Detox Disinfectant</span>
+        <span class="card-benefit">Antibacterial formula</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BRAND STRIP ── -->
+<div class="brand-strip">
+  <span class="brand-strip-label">Product Lines</span>
+  <div class="brand-strip-items">
+    <span class="strip-item">AFRIPURE Home</span>
+    <span class="strip-item">·</span>
+    <span class="strip-item">AFRIPURE Laundry</span>
+    <span class="strip-item">·</span>
+    <span class="strip-item">AFRIPURE Care</span>
+    <span class="strip-item">·</span>
+    <span class="strip-item">AFRIPURE Pro</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-decor-circle"></div>
+    <div class="about-decor-circle2"></div>
+    <div class="about-visual-inner">
+      <div>
+        <div class="big-stat-num">4</div>
+        <div class="big-stat-label">Product Lines</div>
+      </div>
+      <div class="values-grid">
+        <div class="value-chip">Effective</div>
+        <div class="value-chip">Reliable</div>
+        <div class="value-chip">Natural</div>
+        <div class="value-chip">Accessible</div>
+        <div class="value-chip">Modern</div>
+        <div class="value-chip">Professional</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-eyebrow">About AFRIPURE</p>
+    <h2 class="section-title">Built for Markets That Demand Reliability</h2>
+    <p class="section-body">AFRIPURE is a modern home and personal care brand created to deliver reliable everyday products for families, businesses, retailers and distributors. Inspired by nature and designed for daily use.</p>
+    <p class="section-body">Born in Ethiopia with an international vision, our products serve homes, supermarkets, hotels, restaurants and professional supply chains across emerging markets.</p>
+    <div class="line-tags">
+      <span class="line-tag lt-home">Home</span>
+      <span class="line-tag lt-laundry">Laundry</span>
+      <span class="line-tag lt-care">Care</span>
+      <span class="line-tag lt-pro">Pro</span>
+    </div>
+    <a href="products.html" class="btn-dark">View Full Product Range</a>
+  </div>
+</section>
+
+<!-- ── PRODUCTS TEASER ── -->
+<section class="products-section" id="products">
+  <div class="products-header">
+    <div>
+      <p class="section-eyebrow">Selected Products</p>
+      <h2 class="section-title">Clean. Reliable. Natural.</h2>
+    </div>
+    <a href="products.html" class="view-all">View All Products →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-card-img">
+        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Shampoo" alt="Shampoo Curly Hair" />
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag care">Care</span>
+        <span class="product-card-name">Shampoo Curly Hair</span>
+        <p class="product-card-desc">Argan Oil formula — cleanses without stripping natural sebum. Keeps hair shiny and healthy.</p>
+        <span class="product-card-vol">1 L</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-img">
+        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Degreaser" alt="Universal Degreaser" />
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Home</span>
+        <span class="product-card-name">Universal Degreaser</span>
+        <p class="product-card-desc">Eliminates stubborn grease and oil stains. Non-corrosive, citrus scent. Ideal for kitchens and industry.</p>
+        <span class="product-card-vol">500 mL</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-img">
+        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Dishes" alt="Dishwashing Liquid" />
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Home</span>
+        <span class="product-card-name">Dishes</span>
+        <p class="product-card-desc">Super concentrated, neutral pH. Cuts grease, fresh lemon scent. Gentle on hands.</p>
+        <span class="product-card-vol">500 mL</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-img">
+        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Baby+Laundry" alt="Baby Laundry" />
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag laundry">Laundry</span>
+        <span class="product-card-name">Baby Laundry</span>
+        <p class="product-card-desc">Organic and concentrated. Gentle on delicate textiles and colors. Machine and handwash.</p>
+        <span class="product-card-vol">1 L</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── B2B ── -->
+<section class="b2b" id="b2b">
+  <div class="b2b-content">
+    <p class="section-eyebrow">For Distributors &amp; Business</p>
+    <h2 class="section-title">Your Reliable Supply Partner</h2>
+    <p class="section-body">Whether you are a supermarket, hotel group, restaurant chain or distribution company — we offer competitive pricing, consistent quality and flexible supply formats.</p>
+    <a href="#contact" class="btn-primary">Request a Quote</a>
+  </div>
+  <div class="b2b-features">
+    <div class="b2b-feature">
+      <div class="b2b-feature-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="#222820" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div>
+        <p class="b2b-feature-title">Consistent Quality</p>
+        <p class="b2b-feature-desc">Effective formulas with quality ingredients — every batch, every time.</p>
+      </div>
+    </div>
+    <div class="b2b-feature">
+      <div class="b2b-feature-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="#222820" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      </div>
+      <div>
+        <p class="b2b-feature-title">Broad Product Range</p>
+        <p class="b2b-feature-desc">Home, Laundry, Care and Pro lines — a complete offer for any context.</p>
+      </div>
+    </div>
+    <div class="b2b-feature">
+      <div class="b2b-feature-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="#222820" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div>
+        <p class="b2b-feature-title">Competitive Pricing</p>
+        <p class="b2b-feature-desc">Economic and mid-range positioning — strong margins for distributors and retailers.</p>
+      </div>
+    </div>
+    <div class="b2b-feature">
+      <div class="b2b-feature-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="#222820" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+      </div>
+      <div>
+        <p class="b2b-feature-title">Emerging Markets Focus</p>
+        <p class="b2b-feature-desc">Designed for Ethiopia — built to expand internationally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div>
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-title">Start a Conversation with Our Team</h2>
+    <p class="section-body">Whether you are interested in becoming a distributor, placing a wholesale order, or learning more about our products — we would love to hear from you.</p>
+    <div style="margin-top:0.5rem;display:flex;flex-direction:column;gap:1.2rem;">
+      <div>
+        <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-dark);margin-bottom:.3rem;">Legal Name</p>
+        <p style="font-size:.95rem;">Afripure plc</p>
+      </div>
+      <div>
+        <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-dark);margin-bottom:.3rem;">Primary Market</p>
+        <p style="font-size:.95rem;">Ethiopia · International</p>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input class="form-input" type="text" placeholder="First name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name</label>
+        <input class="form-input" type="text" placeholder="Last name" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input class="form-input" type="email" placeholder="your@email.com" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Company / Organisation</label>
+      <input class="form-input" type="text" placeholder="Company name" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">I am a</label>
+      <select class="form-select">
+        <option value="">Select your role</option>
+        <option>Distributor</option>
+        <option>Supermarket / Retailer</option>
+        <option>Hotel / Restaurant / Industry</option>
+        <option>Consumer</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Tell us about your needs..."></textarea>
+    </div>
+    <button class="btn-dark" onclick="alert('Thank you! We will be in touch shortly.')">Send Message</button>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="logog.PNG" alt="AFRIPURE" /></div>
+      <p class="footer-tagline">Pure Care. Everyday Performance.</p>
+      <p class="footer-mission">Reliable cleaning solutions inspired by nature, made for everyday use. Distributed by Afripure plc.</p>
+    </div>
+    <div class="footer-links-group">
+      <div>
+        <p class="footer-col-title">Product Lines</p>
+        <ul class="footer-col-links">
+          <li><a href="products.html#home">AFRIPURE Home</a></li>
+          <li><a href="products.html#laundry">AFRIPURE Laundry</a></li>
+          <li><a href="products.html#care">AFRIPURE Care</a></li>
+          <li><a href="products.html#pro">AFRIPURE Pro</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-col-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#b2b">For Business</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Afripure plc. All rights reserved.</p>
+    <p class="footer-copy">Ethiopia · International Markets</p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.product-card, .b2b-feature, .value-chip').forEach(el => {
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s, transform 0.3s';
+    el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
