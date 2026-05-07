@@ -101,51 +101,14 @@
       opacity: 0; animation: fadeUp 0.8s 1s forwards;
     }
 
-    /* HERO RIGHT — bright white */
+    /* HERO RIGHT — full bleed photo */
     .hero-right {
-      background: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      padding: 8rem 4rem 4rem 6rem;
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; padding: 0;
     }
-    .hero-circle {
-      position: absolute; width: 480px; height: 480px; border-radius: 50%;
-      background: radial-gradient(circle at 55% 45%, var(--gold-light) 0%, rgba(239,220,164,0.22) 55%, transparent 100%);
-      top: 50%; left: 50%;
-      transform: translate(-38%, -50%);
-      opacity: 0; animation: scaleIn 1s 0.3s forwards;
+    .hero-right img.hero-photo {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block;
     }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-      position: relative; z-index: 2; max-width: 420px;
-    }
-    .product-card-mini {
-      background: var(--white);
-      border: 1.5px solid rgba(47,88,25,0.12);
-      box-shadow: 0 2px 14px rgba(47,88,25,0.07);
-      padding: 1.3rem 1.1rem;
-      display: flex; flex-direction: column; gap: 0.5rem;
-      opacity: 0; transition: box-shadow 0.25s, transform 0.25s;
-    }
-    .product-card-mini:nth-child(1) { animation: fadeUp 0.7s 0.6s forwards; }
-    .product-card-mini:nth-child(2) { animation: fadeUp 0.7s 0.75s forwards; margin-top: 2rem; }
-    .product-card-mini:nth-child(3) { animation: fadeUp 0.7s 0.9s forwards; }
-    .product-card-mini:nth-child(4) { animation: fadeUp 0.7s 1.05s forwards; margin-top: -2rem; }
-    .product-card-mini:hover { box-shadow: 0 8px 28px rgba(47,88,25,0.13); transform: translateY(-3px); }
-    .card-line-tag {
-      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--white);
-      background: var(--green-dark); padding: 0.18rem 0.5rem;
-      display: inline-block; width: fit-content;
-    }
-    .card-line-tag.laundry { background: var(--green-mid); }
-    .card-line-tag.care { background: var(--gold); color: var(--charcoal); }
-    .card-line-tag.pro { background: var(--charcoal); }
-    .card-product-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 1.05rem; color: var(--charcoal); line-height: 1.1;
-    }
-    .card-benefit { font-size: 0.72rem; color: var(--green-dark); font-weight: 600; }
 
     /* Buttons */
     .btn-primary {
@@ -204,10 +167,10 @@
     .about-visual-inner { padding: 4rem; display: flex; flex-direction: column; gap: 2rem; position: relative; z-index: 2; }
     .big-stat-num {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 5rem; font-weight: 900; line-height: 1; color: rgba(255,255,255,0.1);
+      font-size: 7rem; font-weight: 900; line-height: 1; color: rgba(255,255,255,0.1);
     }
     .big-stat-label {
-      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--white); font-weight: 700;
     }
     .about-decor-circle {
@@ -221,8 +184,8 @@
     .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
     .value-chip {
       background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.6rem 0.9rem;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.8rem 1.1rem;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--white);
     }
     .about-content {
@@ -235,12 +198,12 @@
     }
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900; font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 900; font-size: clamp(2.4rem, 3.8vw, 3.4rem);
       line-height: 1.05; color: var(--charcoal); margin-bottom: 1.5rem;
     }
     .section-body {
-      font-size: 1rem; line-height: 1.75; color: rgba(34,40,32,0.62);
-      max-width: 460px; margin-bottom: 1.8rem;
+      font-size: 1.08rem; line-height: 1.8; color: rgba(34,40,32,0.65);
+      max-width: 480px; margin-bottom: 1.8rem;
     }
     .line-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .line-tag {
@@ -346,7 +309,7 @@
       display: flex; align-items: flex-start; justify-content: space-between;
       padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.09); margin-bottom: 2rem;
     }
-    .footer-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-logo img { height: 44px; width: auto; display: block; }
     .footer-tagline {
       font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--gold); margin-top: 0.7rem;
@@ -432,29 +395,7 @@
     <span class="hero-tagline">Reliable cleaning solutions inspired by nature</span>
   </div>
   <div class="hero-right">
-    <div class="hero-circle"></div>
-    <div class="hero-grid">
-      <div class="product-card-mini">
-        <span class="card-line-tag">Home</span>
-        <span class="card-product-name">Universal Degreaser</span>
-        <span class="card-benefit">Powerful grease removal</span>
-      </div>
-      <div class="product-card-mini">
-        <span class="card-line-tag laundry">Laundry</span>
-        <span class="card-product-name">Baby Laundry</span>
-        <span class="card-benefit">Gentle on delicate fabrics</span>
-      </div>
-      <div class="product-card-mini">
-        <span class="card-line-tag care">Care</span>
-        <span class="card-product-name">Hand Soap Rose</span>
-        <span class="card-benefit">Sanitizing action</span>
-      </div>
-      <div class="product-card-mini">
-        <span class="card-line-tag pro">Pro</span>
-        <span class="card-product-name">Detox Disinfectant</span>
-        <span class="card-benefit">Antibacterial formula</span>
-      </div>
-    </div>
+    <img class="hero-photo" src="homepage.png" alt="AFRIPURE products lifestyle" />
   </div>
 </section>
 
@@ -519,7 +460,7 @@
   <div class="products-grid">
     <div class="product-card">
       <div class="product-card-img">
-        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Shampoo" alt="Shampoo Curly Hair" />
+        <img src="shampoo.PNG" alt="Shampoo Curly Hair" />
       </div>
       <div class="product-card-body">
         <span class="product-card-tag care">Care</span>
@@ -530,7 +471,7 @@
     </div>
     <div class="product-card">
       <div class="product-card-img">
-        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Degreaser" alt="Universal Degreaser" />
+        <img src="universaldegreaser.PNG" alt="Universal Degreaser" />
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Home</span>
@@ -541,7 +482,7 @@
     </div>
     <div class="product-card">
       <div class="product-card-img">
-        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Dishes" alt="Dishwashing Liquid" />
+        <img src="dishes.PNG" alt="Dishes Dishwashing Liquid" />
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Home</span>
@@ -552,7 +493,7 @@
     </div>
     <div class="product-card">
       <div class="product-card-img">
-        <img src="https://placehold.co/120x180/F9F7F2/2F5819?text=Baby+Laundry" alt="Baby Laundry" />
+        <img src="babylaundry.PNG" alt="Baby Laundry" />
       </div>
       <div class="product-card-body">
         <span class="product-card-tag laundry">Laundry</span>
